@@ -1,0 +1,397 @@
+<ng-container >
+
+    <h1 mat-dialog-title>Search </h1>
+    <div mat-dialog-content class="mat-typography">
+      <form [formGroup]="dynamicForm" enctype="multipart/form-data" #saveform>
+        <div class="container" style="width: 100%;">
+          <div class="row">
+            <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;">
+              <label for="name">Name:</label>
+              <div class="inputFields">
+                <!-- <mat-form-field appearance="fill" style="width: 100% !important;">
+  
+                  <mat-select placeholder="Select name" [formControl]="dynamicForm.controls['name']">
+                    <mat-option *ngFor="let item of names" [value]="item">
+                      {{item}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field> -->
+                <input [formControl]="dynamicForm.controls['name']" type="text" class="form-control inputFields"
+                  id="name" placeholder="Enter name" name="name">
+                <ng-container *ngFor="let validation of validation_messages.name">
+                  <div style="color:red;margin-top: -15px;"
+                    *ngIf="dynamicForm.get('name').hasError(validation.type) && (dynamicForm.get('name').dirty || dynamicForm.get('name').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;">
+              <label for="slider">Slider:</label>
+              <div class="inputFields">
+  
+                <mat-form-field appearance="fill" style="width: 100% !important;">
+  
+                  <mat-select placeholder="Select slider" [formControl]="dynamicForm.controls['slider']">
+                    <mat-option *ngFor="let item of sliders" [value]="item">
+                      {{item}}
+                    </mat-option>
+  
+                  </mat-select>
+                </mat-form-field>
+                <ng-container *ngFor="let validation of validation_messages.slider">
+                  <div style="color:red; margin-top: -15px;"
+                    *ngIf="dynamicForm.get('slider').hasError(validation.type) && (dynamicForm.get('slider').dirty || dynamicForm.get('slider').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+  
+          </div>
+  
+          <div class="row" style="margin-bottom: 10px;">
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group">
+                <label for="title">Title:</label>
+                <input [formControl]="dynamicForm.controls['title']" type="text" class="form-control inputFields"
+                  id="title" placeholder="Enter title" name="title">
+                <ng-container *ngFor="let validation of validation_messages.title">
+                  <div style="color:red;"
+                    *ngIf="dynamicForm.get('title').hasError(validation.type) && (dynamicForm.get('title').dirty || dynamicForm.get('title').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+            
+  
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group">
+                <label for="portalId">portalId:</label>
+                <input type="tel" [formControl]="dynamicForm.controls['portalId']" class="form-control inputFields"
+                  id="portalId" placeholder="Enter portal Id" name="portalId">
+                <ng-container *ngFor="let validation of validation_messages.portalId">
+                  <div style="color:red;"
+                    *ngIf="dynamicForm.get('portalId').hasError(validation.type) && (dynamicForm.get('portalId').dirty || dynamicForm.get('footer').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+  
+  
+          </div>
+  
+          <div class="row" style="margin-bottom: 10px;">
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group">
+                <label for="header">Header:</label>
+                <input [formControl]="dynamicForm.controls['header']" type="text" class="form-control inputFields"
+                  id="header" placeholder="Enter header" name="header">
+                <ng-container *ngFor="let validation of validation_messages.header">
+                  <div style="color:red;"
+                    *ngIf="dynamicForm.get('header').hasError(validation.type) && (dynamicForm.get('header').dirty || dynamicForm.get('header').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group">
+                <label for="sub-header">Sub-Header:</label>
+                <input [formControl]="dynamicForm.controls['sub_header']" type="text" class="form-control inputFields"
+                  id="sub-header" placeholder="Enter sub-header" name="sub-header">
+                <ng-container *ngFor="let validation of validation_messages.sub_header">
+                  <div style="color:red;"
+                    *ngIf="dynamicForm.get('sub_header').hasError(validation.type) && (dynamicForm.get('sub_header').dirty || dynamicForm.get('sub_header').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+           
+           
+          </div>
+          <div class="row" style="margin-bottom: 10px;">
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group">
+                <label for="sub-header">Lang:</label>
+                <input [formControl]="dynamicForm.controls['lang']" type="text" class="form-control inputFields"
+                  id="sub-header" placeholder="Enter sub-header" name="sub-header">
+                <!-- <ng-container *ngFor="let validation of validation_messages.sub_header">
+                  <div style="color:red;"
+                    *ngIf="dynamicForm.get('sub_header').hasError(validation.type) && (dynamicForm.get('sub_header').dirty || dynamicForm.get('sub_header').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container> -->
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group">
+                <label for="portalId">theme:</label>
+                <input type="text" [formControl]="dynamicForm.controls['theme']" class="form-control inputFields"
+                  id="portalId" placeholder="Enter theme" name="portalId">
+                <!-- <ng-container *ngFor="let validation of validation_messages.portalId">
+                  <div style="color:red;"
+                    *ngIf="dynamicForm.get('portalId').hasError(validation.type) && (dynamicForm.get('portalId').dirty || dynamicForm.get('footer').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container> -->
+              </div>
+            </div>
+          </div>
+  
+          <div class="row" style="margin-bottom: 10px;">
+            <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;">
+              <label for="name">Is Download Url:</label>
+              <div class="inputFields">
+                <mat-form-field appearance="fill" style="width: 100% !important;">
+  
+                  <mat-select placeholder="Select name" [formControl]="dynamicForm.controls['downloadUrl']">
+                    <mat-option *ngFor="let item of isAvailable" [value]="item">
+                      {{item}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <!-- <ng-container *ngFor="let validation of validation_messages.name">
+                  <div style="color:red;margin-top: -15px;"
+                    *ngIf="dynamicForm.get('name').hasError(validation.type) && (dynamicForm.get('name').dirty || dynamicForm.get('name').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container> -->
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group">
+                <label for="portalId">URL:</label>
+                <input type="text" [formControl]="dynamicForm.controls['url']" class="form-control inputFields"
+                  id="url" placeholder="Enter Url" name="url">
+                <!-- <ng-container *ngFor="let validation of validation_messages.portalId">
+                  <div style="color:red;"
+                    *ngIf="dynamicForm.get('portalId').hasError(validation.type) && (dynamicForm.get('portalId').dirty || dynamicForm.get('footer').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container> -->
+              </div>
+            </div>
+          </div>
+  
+          <div class="row" style="margin-bottom: 10px;">
+            <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;">
+              <label for="name">Is Trending:</label>
+              <div class="inputFields">
+                <mat-form-field appearance="fill" style="width: 100% !important;">
+  
+                  <mat-select placeholder="Select name" [formControl]="dynamicForm.controls['isTrending']">
+                    <mat-option *ngFor="let item of isAvailable" [value]="item">
+                      {{item}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <!-- <ng-container *ngFor="let validation of validation_messages.name">
+                  <div style="color:red;margin-top: -15px;"
+                    *ngIf="dynamicForm.get('name').hasError(validation.type) && (dynamicForm.get('name').dirty || dynamicForm.get('name').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container> -->
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group">
+                <label for="portalId">Trending:</label>
+                <input type="text" [formControl]="dynamicForm.controls['trending']" class="form-control inputFields"
+                  id="portalId" placeholder="Enter Trending name" name="Trending">
+                <!-- <ng-container *ngFor="let validation of validation_messages.portalId">
+                  <div style="color:red;"
+                    *ngIf="dynamicForm.get('portalId').hasError(validation.type) && (dynamicForm.get('portalId').dirty || dynamicForm.get('footer').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container> -->
+              </div>
+            </div>
+          </div>
+  
+          <div class="row" style="margin-bottom: 10px;">
+            <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;">
+              <label for="name">Is Recommended:</label>
+              <div class="inputFields">
+                <mat-form-field appearance="fill" style="width: 100% !important;">
+  
+                  <mat-select placeholder="Select name" [formControl]="dynamicForm.controls['isRecommended']">
+                    <mat-option *ngFor="let item of isAvailable" [value]="item">
+                      {{item}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <!-- <ng-container *ngFor="let validation of validation_messages.name">
+                  <div style="color:red;margin-top: -15px;"
+                    *ngIf="dynamicForm.get('name').hasError(validation.type) && (dynamicForm.get('name').dirty || dynamicForm.get('name').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container> -->
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group">
+                <label for="portalId">Recommended:</label>
+                <input type="text" [formControl]="dynamicForm.controls['recommended']" class="form-control inputFields"
+                  id="portalId" placeholder="Enter portal Id" name="portalId">
+                <!-- <ng-container *ngFor="let validation of validation_messages.portalId">
+                  <div style="color:red;"
+                    *ngIf="dynamicForm.get('portalId').hasError(validation.type) && (dynamicForm.get('portalId').dirty || dynamicForm.get('footer').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container> -->
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;">
+              <label for="name">Header Color:</label>
+              <div class="inputFields">
+                <!-- <mat-form-field appearance="fill" style="width: 100% !important;">
+  
+                  <mat-select placeholder="Select color" [formControl]="dynamicForm.controls['headerColor']">
+                    <mat-option *ngFor="let item of names" [value]="item">
+                      {{item}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field> -->
+                <input type="color" [formControl]="dynamicForm.controls['headerColor']" class="form-control inputFields"
+                  id="portalId" placeholder="Enter headerColor" name="portalId">
+                <!-- <ng-container *ngFor="let validation of validation_messages.name">
+                  <div style="color:red;margin-top: -15px;"
+                    *ngIf="dynamicForm.get('name').hasError(validation.type) && (dynamicForm.get('name').dirty || dynamicForm.get('name').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container> -->
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;">
+              <label for="slider">Footer Color:</label>
+              <div class="inputFields">
+  
+                <!-- <mat-form-field appearance="fill" style="width: 100% !important;">
+  
+                  <mat-select placeholder="Select slider" [formControl]="dynamicForm.controls['slider']">
+                    <mat-option *ngFor="let item of sliders" [value]="item">
+                      {{item}}
+                    </mat-option>
+  
+                  </mat-select>
+                </mat-form-field> -->
+                <input [formControl]="dynamicForm.controls['footerColor']" type="color" class="form-control inputFields"
+                  id="header" placeholder="Enter FooterColor" name="header">
+                <!-- <ng-container *ngFor="let validation of validation_messages.slider">
+                  <div style="color:red; margin-top: -15px;"
+                    *ngIf="dynamicForm.get('slider').hasError(validation.type) && (dynamicForm.get('slider').dirty || dynamicForm.get('slider').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container> -->
+              </div>
+            </div>
+  
+          </div>
+  
+          <div class="row">
+            <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;">
+              <label for="name">Background-color:</label>
+              <div class="inputFields">
+                <!-- <mat-form-field appearance="fill" style="width: 100% !important;">
+  
+                  <mat-select placeholder="Select name" [formControl]="dynamicForm.controls['backgroundColor']">
+                    <mat-option *ngFor="let item of names" [value]="item">
+                      {{item}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field> -->
+                <input [formControl]="dynamicForm.controls['backgroundColor']" type="color" class="form-control inputFields"
+                  id="header" placeholder="Enter backgroundColor" name="header">
+                <!-- <ng-container *ngFor="let validation of validation_messages.name">
+                  <div style="color:red;margin-top: -15px;"
+                    *ngIf="dynamicForm.get('name').hasError(validation.type) && (dynamicForm.get('name').dirty || dynamicForm.get('name').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container> -->
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;">
+              <label for="slider">Is List:</label>
+              <div class="inputFields">
+  
+                <mat-form-field appearance="fill" style="width: 100% !important;">
+  
+                  <mat-select placeholder="Select slider" [formControl]="dynamicForm.controls['list']">
+                    <mat-option *ngFor="let item of isAvailable" [value]="item">
+                      {{item}}
+                    </mat-option>
+  
+                  </mat-select>
+                </mat-form-field>
+                <!-- <ng-container *ngFor="let validation of validation_messages.slider">
+                  <div style="color:red; margin-top: -15px;"
+                    *ngIf="dynamicForm.get('slider').hasError(validation.type) && (dynamicForm.get('slider').dirty || dynamicForm.get('slider').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container> -->
+              </div>
+            </div>
+  
+          </div>
+  
+          <div class="row" style="margin-bottom: 10px;">
+            <div class="col-sm-12 col-md-12">
+              <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea mode="md" [formControl]="dynamicForm.controls['description']" #myInput id="myInput"
+                  class="inputFields" rows="6" maxLength="180" style="width: 100%;padding: 10px;"></textarea>
+                <ng-container *ngFor="let validation of validation_messages.description">
+                  <div style="color:red;"
+                    *ngIf="dynamicForm.get('description').hasError(validation.type) && (dynamicForm.get('description').dirty || dynamicForm.get('description').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row" style="margin-bottom: 10px;">
+            <div class="col-sm-12 col-md-12">
+              <div class="form-group">
+                <label for="footer">Footer:</label>
+                <input type="text" [formControl]="dynamicForm.controls['footer']" class="form-control inputFields"
+                  id="footer" placeholder="Enter footer" name="footer">
+                <ng-container *ngFor="let validation of validation_messages.footer">
+                  <div style="color:red;"
+                    *ngIf="dynamicForm.get('footer').hasError(validation.type) && (dynamicForm.get('footer').dirty || dynamicForm.get('footer').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+  
+         
+  
+          <div mat-dialog-actions class="row" style="margin-top: 10px;">
+            <div class="col-sm-6 col-md-6">
+              <!-- <button (click)="onNoClick()" type="submit" class="btn btn-secondary">Cancel</button> -->
+              <button mat-button (click)="onNoClick()" class="btn btn-secondary">No Thanks</button>
+            </div>
+  
+            <div class="col-sm-6 col-md-6">
+              <button mat-button  [disabled]="dynamicForm.invalid" 
+                style="float: right;" class="btn btn-primary" cdkFocusInitial>Submit</button>
+              <!-- <button *ngIf="data.type == 'imageUpload'"  mat-button [disabled]="dynamicForm.invalid" [mat-dialog-close]="data.id" 
+                style="float: right;" class="btn btn-primary" cdkFocusInitial>Upload</button> -->
+            </div>
+  
+          </div>
+        </div>
+  
+      </form>
+  
+      
+    </div>
+  </ng-container>

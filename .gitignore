@@ -1,5 +1,7 @@
 
 # dependencies
 node_modules
-front-end/mean-angular-auth-app/node_modules
+mean-angular-auth-app/node_modules
+mean-angular-auth-app/dist
+dist
 # /front-end/mean-angular-auth-app/dist
