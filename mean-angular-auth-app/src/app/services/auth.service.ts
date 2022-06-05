@@ -11,7 +11,7 @@ export class AuthService {
   authToken: any;
   user: any;
 
-
+  public base_url = 'http://ec2-65-0-91-254.ap-south-1.compute.amazonaws.com:3000/';
   constructor(
     private http: HttpClient
   ) { }
@@ -19,14 +19,14 @@ export class AuthService {
   registerUser(user: any) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.post('http://localhost:3000/users/register', user, {headers: headers})
+    return this.http.post( this.base_url +'users/register', user, {headers: headers})
     .pipe(map((response: any) => response));
   }
 
   authenticateUser(user: any) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.post('http://localhost:3000/users/authenticate', user, {headers: headers})
+    return this.http.post(this.base_url +'users/authenticate', user, {headers: headers})
     .pipe(map((response: any) => response));
   }
 
@@ -48,7 +48,7 @@ export class AuthService {
     this.loadToken();
     headers = headers.set('Authorization', this.authToken);
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.get('http://localhost:3000/users/profile', {headers: headers})
+    return this.http.get(this.base_url +'users/profile', {headers: headers})
     .pipe(map((response: any) => response));
   }
 

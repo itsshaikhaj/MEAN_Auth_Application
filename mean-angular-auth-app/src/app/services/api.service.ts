@@ -7,7 +7,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class ApiService {
-  public base_url = 'http://localhost:3000/';
+  public base_url = 'http://ec2-65-0-91-254.ap-south-1.compute.amazonaws.com:3000/';
   authToken: any;
   constructor(
     private http: HttpClient,
