@@ -23,6 +23,7 @@ mongoose.connection.on('error', (err) => {
 const app = express();
 
 const users = require('./routes/users');
+const products = require('./routes/productRoute');
 // PORT NUMBER
 const port = 3000;
 
@@ -51,6 +52,7 @@ require('./config/passport')(passport);
 // BODY PARSER MIDDLEWARE
 app.use(bodyParser.json());
 app.use('/users', users);
+app.use('/products', products);
 
 
 

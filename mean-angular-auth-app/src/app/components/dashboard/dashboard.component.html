@@ -1,31 +1,47 @@
 <h2 class="page-header">Dashboard</h2>
 <p>Welcome to your Dashboard</p>
 
+<div style="margin: 10px;">
+  <button class="btn btn-primary" (click)="openDialog()">
+    Search
+  </button>
+</div>
+
 <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
   
       <!-- Position Column -->
-      <ng-container matColumnDef="position">
+      <ng-container matColumnDef="no">
         <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        <td mat-cell *matCellDef="let element; let i = index;"> {{i + 1}} </td>
       </ng-container>
   
       <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <ng-container matColumnDef="biller_name">
+        <th mat-header-cell *matHeaderCellDef> Biller Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.biller_name}} </td>
       </ng-container>
   
       <!-- Weight Column -->
-      <ng-container matColumnDef="weight">
-        <th mat-header-cell *matHeaderCellDef> Weight </th>
-        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+      <ng-container matColumnDef="territory_name">
+        <th mat-header-cell *matHeaderCellDef> Territory Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.territory_name}} </td>
       </ng-container>
   
       <!-- Symbol Column -->
-      <ng-container matColumnDef="symbol">
-        <th mat-header-cell *matHeaderCellDef> Symbol </th>
-        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+      <ng-container matColumnDef="operator_name">
+        <th mat-header-cell *matHeaderCellDef> Operator Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.operator_name}} </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="pack_type">
+        <th mat-header-cell *matHeaderCellDef> Pack Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.pack_type}} </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="current_status">
+        <th mat-header-cell *matHeaderCellDef> Current Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.current_status}} </td>
       </ng-container>
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

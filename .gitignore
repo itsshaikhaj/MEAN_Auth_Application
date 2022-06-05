@@ -3,5 +3,5 @@
 node_modules
 mean-angular-auth-app/node_modules
 mean-angular-auth-app/dist
-dist
+# dist
 # /front-end/mean-angular-auth-app/dist

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { SearchComponent } from 'src/app/search/search.component';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,26 +13,81 @@ import { SearchComponent } from 'src/app/search/search.component';
 export class DashboardComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  
+  displayedColumns: string[] = ['no', 'biller_name', 'territory_name', 'operator_name', 'pack_type', 'current_status'];
+  // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  dataSource!: MatTableDataSource<PeriodicElement>;
 
   constructor(
     private dialog: MatDialog,
+    private apiService : ApiService
   )
-  { }
+  { 
+    console.log("dashboard");
+  }
   
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
   }
 
 
   ngOnInit() {
+    this.getAllProducts();
   }
+
+  
+  openDialog(): void {
+    // data.type = type;
+    const dialogRef = this.dialog.open(SearchComponent, {
+      width: '520px',
+      backdropClass: 'custom-dialog-backdrop-class',
+      panelClass: 'custom-dialog-panel-class',
+      // data: data
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.dataSource = new MatTableDataSource<PeriodicElement>(result);
+      this.dataSource.paginator = this.paginator;
+    });
+  }
+
+
+  // get All Products
+  getAllProducts() {
+    this.apiService.getAllProducts().subscribe(response => {
+    this.dataSource = new MatTableDataSource<PeriodicElement>(response.data);
+    this.dataSource.paginator = this.paginator;
+    },
+     err => {
+       return false;
+     });
+  }
+
+  // Filter Products
+  // search() {
+  //   let data = {
+  //     pack_type: this.dynamicForm.controls['pack_type'].value,
+  //     territory_name: this.dynamicForm.controls['territory_name'].value,
+  //     operator_name: this.dynamicForm.controls['operator_name'].value,
+  //     current_status: this.dynamicForm.controls['current_status'].value,
+  //   }
+  //   console.log("data", data);
+  //   this.apiService.filterProducts(data).subscribe((response: any) => {
+  //     console.log('response :', response);
+  //   },
+  //     (error: HttpErrorResponse) => {
+  //       console.log('error :', error);
+  //     }
+  //   );
+  // }
+
+
+
+
 
 
 
 }
+
+
 
 export interface PeriodicElement {
   name: string;

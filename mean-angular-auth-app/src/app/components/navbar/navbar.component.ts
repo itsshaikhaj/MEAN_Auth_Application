@@ -19,6 +19,8 @@ export class NavbarComponent implements OnInit {
     private dialog: MatDialog
   ) { }
 
+
+
   ngOnInit(): void {
   }
 
@@ -30,7 +32,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/login']);
     return false;
   }
-
+  // ['no', 'biller_name', 'territory_name', 'operator_name', 'pack_type', 'current_status'];
   openDialog(): void {
     // data.type = type;
     const dialogRef = this.dialog.open(SearchComponent, {
